@@ -311,14 +311,10 @@ function resetForm() {
 }
 
 function hideAllMessage() {
-    hideMessageSpan("tbTKNV");
-    hideMessageSpan("tbTen");
-    hideMessageSpan("tbEmail");
-    hideMessageSpan("tbMatKhau");
-    hideMessageSpan("tbNgay");
-    hideMessageSpan("tbLuongCB");
-    hideMessageSpan("tbChucVu");
-    hideMessageSpan("tbGiolam");
+    var messageSpans = document.getElementsByClassName("sp-thongbao");
+    for (var i = 0; i < messageSpans.length; i++) {
+        messageSpans[i].style.display = "none";
+    }
 }
 
 function deleteEmp(username) {
