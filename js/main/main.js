@@ -82,6 +82,7 @@ function addEmp() {
             timeWork
         );
         empManagement.addNewEmp(employee);
+        closeForm();
         updateData(empManagement.empList);
     }
 }
@@ -256,6 +257,10 @@ function toggleEditMode(status) {
     querySeletorById("tknv").disabled = status;
 }
 
+function closeForm() {
+    querySeletorById("btnDong").click();
+}
+
 function updateEmp() {
     var username = querySeletorById("tknv").value;
     if (username == editUsername) {
@@ -291,10 +296,13 @@ function updateEmp() {
                 timeWork
             );
             empManagement.updateEmp(getIndexByUsername(username), employee);
+            closeForm();
             updateData(empManagement.empList);
             isEdit = false;
         }
     } else {
+        alert("Chức năng cập nhật không khả dụng !!!");
+        resetForm();
     }
 }
 
@@ -329,7 +337,9 @@ function searchByName() {
 }
 
 querySeletorById("tknv").addEventListener("click", function (e) {
-    e.target.setAttribute("oldVal", e.target.value);
+    if (isEdit) {
+        e.target.setAttribute("oldVal", e.target.value);
+    }
 });
 
 querySeletorById("tknv").addEventListener("change", function (e) {
